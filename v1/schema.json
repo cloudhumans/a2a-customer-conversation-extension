@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cloudhumans.github.io/a2a-customer-conversation-extension/v1/schema.json",
+  "title": "A2A Customer Conversation Extension v1, metadata values",
+  "$defs": {
+    "conversationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenant": {
+      "type": "string",
+      "minLength": 1
+    },
+    "channel": {
+      "type": "string",
+      "minLength": 1,
+      "examples": ["chat", "email", "whatsapp", "voice", "sms", "social", "api"]
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "email": {"type": "string"},
+        "phone": {"type": "string"}
+      }
+    },
+    "outcome": {
+      "type": "string",
+      "enum": ["answered", "resolved", "needsHuman"]
+    },
+    "handoff": {
+      "type": "object",
+      "required": ["note"],
+      "properties": {
+        "note": {"type": "string", "minLength": 1},
+        "reason": {
+          "type": "string",
+          "examples": ["customer_request", "out_of_scope", "policy", "low_confidence", "out_of_office"]
+        }
+      }
+    }
+  }
+}
